@@ -40,8 +40,8 @@ Visit: http://localhost:5173/ login or signup
   use focusflow
 
  # Manual Setup (Without Docker)
-  docker start cassandra-db
-docker exec -it cassandra-db cqlsh
+  docker start cassandra
+docker exec -it cassandra cqlsh
 USE focusflow;
 DESCRIBE tables;
 
