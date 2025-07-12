@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  cassandra:
+    image: cassandra:latest
+    container_name: cassandra
+    ports:
+      - "9042:9042"
+    volumes:
+      - cassandra-data:/var/lib/cassandra
+    healthcheck:
+      test: ["CMD", "cqlsh", "-e", "describe keyspaces"]
+      interval: 20s
+      timeout: 10s
+      retries: 10
+    networks:
+      - app-network
+
+  focusflow-backend:
+    build:
+      context: ./backend
+    container_name: focusflow-backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      cassandra:
+        condition: service_healthy
+    environment:
+      - EMAIL_USERNAME=${EMAIL_USERNAME}
+      - EMAIL_PASSWORD=${EMAIL_PASSWORD}
+    networks:
+      - app-network
+
+  focusflow-frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_URL: http://localhost:8080
+    container_name: focusflow-frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - focusflow-backend
+    networks:
+      - app-network
+
+volumes:
+  cassandra-data:
+
+networks:
+  app-network:
+    driver: bridge
