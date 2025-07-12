@@ -5,3 +5,4 @@
 *.sh text eol=lf
 *.cql text eol=lf
 *.sql text eol=lf
+*.properties text eol=lf 
