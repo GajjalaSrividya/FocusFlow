@@ -10,20 +10,22 @@ RUN mvn clean package -DskipTests
 # ---------- Stage 2: Run the app ----------
 FROM eclipse-temurin:17-jdk
 
-# Required for waiting for Cassandra
-RUN apt-get update && apt-get install -y netcat-openbsd
+# Install dependencies and cqlsh
+RUN apt-get update && \
+    apt-get install -y netcat-openbsd python3-pip && \
+    pip3 install cqlsh --break-system-packages && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-# Copy the jar from the builder
+# Copy built jar and config
 COPY --from=builder /build/target/*.jar app.jar
-
-# Copy the application.properties
 COPY src/main/resources/application.properties ./application.properties
 
-# Copy and make the wait script executable
+# Copy the wait script
 COPY wait-for-cassandra.sh .
-RUN chmod +x ./wait-for-cassandra.sh
+RUN chmod +x wait-for-cassandra.sh
 
-# Entrypoint waits for Cassandra and then starts the Spring Boot app
+# Start Spring Boot after Cassandra keyspace is ready
 ENTRYPOINT ["./wait-for-cassandra.sh", "java", "-jar", "app.jar", "--spring.config.location=classpath:/,file:./application.properties"]

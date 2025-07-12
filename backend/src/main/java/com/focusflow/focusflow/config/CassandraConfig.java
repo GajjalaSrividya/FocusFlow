@@ -30,7 +30,6 @@ public class CassandraConfig extends AbstractCassandraConfiguration {
     protected String getLocalDataCenter() {
         return "datacenter1";
     }
-
     @Bean
     public CassandraTemplate cassandraTemplate(CqlSession session) {
         return new CassandraTemplate(session);
