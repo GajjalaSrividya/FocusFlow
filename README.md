@@ -24,8 +24,8 @@
 
 ** Running everything with docker
 # Clone the repo
-git clone https://github.com/GajjalsSrividya/focusflow.git
-cd focusflow
+git clone https://github.com/GajjalsSrividya/FocusFlow.git
+cd FocusFlow
 #stop and remove all containers,networks
 docker compose down
 # Start all services
