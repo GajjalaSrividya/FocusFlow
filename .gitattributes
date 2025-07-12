@@ -1,0 +1,7 @@
+# Auto normalize all text files
+* text=auto
+
+# Keep shell scripts and CQL files as LF
+*.sh text eol=lf
+*.cql text eol=lf
+*.sql text eol=lf
