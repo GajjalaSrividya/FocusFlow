@@ -17,14 +17,13 @@ services:
       - app-network
 
   focusflow-backend:
-    build:
-      context: ./backend
+    image: srividyagajjala/focusflow-backend:latest
     container_name: focusflow-backend
-    ports:
-      - "8080:8080"
     depends_on:
       cassandra:
         condition: service_healthy
+    ports:
+      - "8080:8080"
     environment:
       - EMAIL_USERNAME=${EMAIL_USERNAME}
       - EMAIL_PASSWORD=${EMAIL_PASSWORD}
@@ -32,10 +31,7 @@ services:
       - app-network
 
   focusflow-frontend:
-    build:
-      context: ./frontend
-      args:
-        VITE_API_URL: http://localhost:8080
+    image: srividyagajjala/focusflow-frontend:latest
     container_name: focusflow-frontend
     ports:
       - "5173:5173"

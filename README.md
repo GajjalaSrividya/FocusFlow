@@ -1,61 +1,44 @@
-# FocusFlow
-**FocusFlow** is a to-do management web application that helps users stay organized, focused, and productive. It allows users to sign up, log in, manage their weekly tasks, and receive automatic email reminders every day at midnight.
+# 🚀 FocusFlow
 
-# Tech Stack
+**FocusFlow** is a full-stack to-do management application that helps users stay organized and productive. It supports login/signup, lets you manage your weekly tasks, and sends daily task reminder emails at midnight.
 
-# Backend
-- Spring Boot 3.1.5
-- Spring Security+JWT authentication
-- JavaMailSender (for daily task email reminders)
-- Java 17
+---
 
-# Database
-- Apache Cassandra 4.1.9(cqlsh host: 9042 )
+## 🛠️ Tech Stack
 
-# Frontend
-- React
--Tailwind css
+### 🔧 Backend
+- Spring Boot 3.1.5 (Java 17)
+- Spring Security with JWT
+- JavaMailSender for email reminders
 
-# Build & Tools
-- Maven
-- Eclipse IDE
+### 🗄️ Database
+- Apache Cassandra 4.1.9 (port `9042`)
+
+### 💻 Frontend
+- React + Tailwind CSS
+
+### ⚙️ Tools
 - Docker
 - Git & GitHub
 
-** Running everything with docker
-# Clone the repo
-git clone https://github.com/GajjalsSrividya/FocusFlow.git
+---
+
+## 🐳 Run FocusFlow with Docker (Recommended)
+
+> ⚠️ Make sure [Docker](https://www.docker.com/products/docker-desktop/) is installed and running on your system.
+
+### 1. Clone the Repo
+```bash
+git clone https://github.com/GajjalaSrividya/FocusFlow.git
 cd FocusFlow
-#stop and remove all containers,networks
-docker compose down
-# Start all services
-docker-compose up --build
+cp .env.example .env
+Edit .env and provide your Gmail credentials (used for sending emails)
+# start the application
+docker compose up
+http://localhost:5173/signup
+http://localhost:5173/login
 
-Visit: http://localhost:5173/ login or signup
->  Frontend runs at: [http://localhost:5173]
->  Backend API runs at: [http://localhost:8080]
-  
-  #see tables 
-  docker exec -it cassandra cqlsh
-  use focusflow
-
- # Manual Setup (Without Docker)
-  docker start cassandra
+##View Tables in Cassandra
 docker exec -it cassandra cqlsh
 USE focusflow;
-DESCRIBE tables;
-
-**backend
-cd backend
-# Run with Maven Wrapper
-./mvnw spring-boot:run
-# or regular Maven
-mvn spring-boot:run -DskipTests
-
-**frontend
-cd frontend
-npm install
-npm run dev
-Visit: http://localhost:5173/ login or signup
-
-
+DESCRIBE TABLES;
