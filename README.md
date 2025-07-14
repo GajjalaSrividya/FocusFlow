@@ -7,7 +7,7 @@ It enables users to sign up, log in, manage their weekly tasks, and receive auto
 
 ##  Tech Stack
 
-###  Backend
+### 🔧 Backend
 - Java 17
 - Spring Boot 3.1.5
 - Spring Security with JWT authentication
@@ -20,17 +20,13 @@ It enables users to sign up, log in, manage their weekly tasks, and receive auto
 - React
 - Tailwind CSS
 
-###  Build & Tools
+### 🛠️ Build & Tools
 - Maven
 - Docker
 - Eclipse IDE
 - Git & GitHub
 
----
-
 ##  Running with Docker (Recommended)
-
-```bash
 # Clone the repository
 git clone https://github.com/GajjalaSrividya/FocusFlow.git
 cd FocusFlow
@@ -41,42 +37,48 @@ docker compose down
 # Build and start all services
 docker-compose up --build
 
-
-Visit: http://localhost:5173/ login or sign up
 Frontend: http://localhost:5173
 Backend API: http://localhost:8080
+Login/Signup: Go to http://localhost:5173
   
-#View Cassandra Tables
+# View Cassandra Tables
 docker exec -it cassandra cqlsh
 USE focusflow;
 DESCRIBE tables;
 
-#Manual Setup (Without Docker)
-**backend
+# Manual Setup (Without Docker)
+**backend**
 cd backend
 # Run using Maven Wrapper
 ./mvnw spring-boot:run
 # Or using regular Maven
 mvn spring-boot:run -DskipTests
 
-**frontend
+**frontend**
 cd frontend
 npm install
 npm run dev
 Visit: http://localhost:5173/ login or sign up
 
 ## Features
+
 ### Authentication
-- **JWT-secured login and signup** with Spring Security to ensure secure user sessions.
+- **JWT-secured login and signup** using Spring Security for secure user sessions.
+
 ### Task Management
-- **Weekly task planning** – Add tasks for the upcoming 7 days.
-- **CRUD operations** – Create, update, delete, and mark tasks as completed.
-###  Email Reminders
-- **Automatic daily email at midnight** using JavaMailSender, sending the day’s tasks.
+- **Weekly task planning** for the upcoming 7 days.
+- **Full CRUD functionality** to create, update, delete, and mark tasks as completed.
+
+### Email Reminders
+- **Daily task emails at midnight** using JavaMailSender to notify users of their tasks for the day.
+
 ### Task Calendar View
-- **Interactive calendar** to view tasks for any selected date.
-### Progress Tracking *(In Progress)*
-- **Daily and overall performance tracking** with visual stats (coming soon).
+- **Interactive calendar** to select a date and view tasks for that specific day.
+
+### Progress Tracking 
+- **Daily and overall task completion tracking** to monitor user productivity. 
+
 ### Docker Integration
-- **Full app containerization** – Run backend, frontend, and Cassandra DB using Docker Compose.
+- **Complete containerization** of backend, frontend, and Cassandra database using Docker Compose.
+
 
