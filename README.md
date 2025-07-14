@@ -43,7 +43,9 @@ Login/Signup: Go to http://localhost:5173
   
 # View Cassandra Tables
 docker exec -it cassandra cqlsh
+
 USE focusflow;
+
 DESCRIBE tables;
 
 # Manual Setup (Without Docker)
@@ -56,8 +58,11 @@ mvn spring-boot:run -DskipTests
 
 **frontend**
 cd frontend
+
 npm install
+
 npm run dev
+
 Visit: http://localhost:5173/ login or sign up
 
 ## Features
