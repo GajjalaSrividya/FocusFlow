@@ -1,61 +1,82 @@
 # FocusFlow
-**FocusFlow** is a to-do management web application that helps users stay organized, focused, and productive. It allows users to sign up, log in, manage their weekly tasks, and receive automatic email reminders every day at midnight.
 
-# Tech Stack
+**FocusFlow** is a full-stack to-do management web application that helps users stay organized, focused, and productive.  
+It enables users to sign up, log in, manage their weekly tasks, and receive automatic daily email reminders at midnight.
 
-# Backend
-- Spring Boot 3.1.5
-- Spring Security+JWT authentication
-- JavaMailSender (for daily task email reminders)
+---
+
+##  Tech Stack
+
+###  Backend
 - Java 17
+- Spring Boot 3.1.5
+- Spring Security with JWT authentication
+- JavaMailSender (for scheduled task reminder emails)
 
-# Database
-- Apache Cassandra 4.1.9(cqlsh host: 9042 )
+###  Database
+- Apache Cassandra 4.1.9 (CQL on port 9042)
 
-# Frontend
+###  Frontend
 - React
--Tailwind css
+- Tailwind CSS
 
-# Build & Tools
+###  Build & Tools
 - Maven
-- Eclipse IDE
 - Docker
+- Eclipse IDE
 - Git & GitHub
 
-** Running everything with docker
-# Clone the repo
-git clone https://github.com/GajjalsSrividya/FocusFlow.git
+---
+
+##  Running with Docker (Recommended)
+
+```bash
+# Clone the repository
+git clone https://github.com/GajjalaSrividya/FocusFlow.git
 cd FocusFlow
-#stop and remove all containers,networks
+
+# Stop and remove any existing containers and networks (optional cleanup)
 docker compose down
-# Start all services
+
+# Build and start all services
 docker-compose up --build
 
-Visit: http://localhost:5173/ login or signup
->  Frontend runs at: [http://localhost:5173]
->  Backend API runs at: [http://localhost:8080]
-  
-  #see tables 
-  docker exec -it cassandra cqlsh
-  use focusflow
 
- # Manual Setup (Without Docker)
-  docker start cassandra
+Visit: http://localhost:5173/ login or sign up
+Frontend: http://localhost:5173
+Backend API: http://localhost:8080
+  
+#View Cassandra Tables
 docker exec -it cassandra cqlsh
 USE focusflow;
 DESCRIBE tables;
 
+#Manual Setup (Without Docker)
 **backend
 cd backend
-# Run with Maven Wrapper
+# Run using Maven Wrapper
 ./mvnw spring-boot:run
-# or regular Maven
+# Or using regular Maven
 mvn spring-boot:run -DskipTests
 
 **frontend
 cd frontend
 npm install
 npm run dev
-Visit: http://localhost:5173/ login or signup
+Visit: http://localhost:5173/ login or sign up
 
+## Features
+### Authentication
+- **JWT-secured login and signup** with Spring Security to ensure secure user sessions.
+### Task Management
+- **Weekly task planning** – Add tasks for the upcoming 7 days.
+- **CRUD operations** – Create, update, delete, and mark tasks as completed.
+###  Email Reminders
+- **Automatic daily email at midnight** using JavaMailSender, sending the day’s tasks.
+### Task Calendar View
+- **Interactive calendar** to view tasks for any selected date.
+### Progress Tracking *(In Progress)*
+- **Daily and overall performance tracking** with visual stats (coming soon).
+### Docker Integration
+- **Full app containerization** – Run backend, frontend, and Cassandra DB using Docker Compose.
 
