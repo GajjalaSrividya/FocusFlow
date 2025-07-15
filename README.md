@@ -29,7 +29,12 @@ It enables users to sign up, log in, manage their weekly tasks, and receive auto
 ##  Running with Docker (Recommended)
 # Clone the repository
 git clone https://github.com/GajjalaSrividya/FocusFlow.git
+
 cd FocusFlow
+
+cp .env.example .env
+
+Edit .env and provide your Gmail credentials (used for sending emails)
 
 # Stop and remove any existing containers and networks (optional cleanup)
 docker compose down
