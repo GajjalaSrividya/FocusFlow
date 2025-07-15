@@ -30,15 +30,18 @@ services:
     networks:
       - app-network
 
-  focusflow-frontend:
-    image: srividyagajjala/focusflow-frontend:latest
-    container_name: focusflow-frontend
-    ports:
-      - "5173:5173"
-    depends_on:
-      - focusflow-backend
-    networks:
-      - app-network
+ focusflow-frontend:
+  image: srividyagajjala/focusflow-frontend:latest
+  container_name: focusflow-frontend
+  ports:
+    - "5173:5173"
+  depends_on:
+    - focusflow-backend
+  environment:
+    - VITE_API_URL=http://focusflow-backend:8080
+  networks:
+    - app-network
+
 
 volumes:
   cassandra-data:
