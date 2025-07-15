@@ -28,7 +28,6 @@
 > ⚠️ Make sure [Docker](https://www.docker.com/products/docker-desktop/) is installed and running on your system.
 
 ### 1. Clone the Repo
-```bash
 git clone https://github.com/GajjalaSrividya/FocusFlow.git
 cd FocusFlow
 cp .env.example .env
