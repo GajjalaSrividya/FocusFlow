@@ -36,7 +36,7 @@ cp .env.example .env
 
 Edit .env and provide your Gmail credentials (used for sending emails)
 # start the application
-docker compose up
+docker compose up -d
 
 http://localhost:5173/signup
 
@@ -48,3 +48,10 @@ docker exec -it cassandra cqlsh
 USE focusflow;
 
 DESCRIBE TABLES;
+
+# stop and remove containers
+docker compose down
+
+# stop, remove containers, and delete DB data
+docker compose down -v
+
