@@ -29,15 +29,22 @@
 
 ### 1. Clone the Repo
 git clone https://github.com/GajjalaSrividya/FocusFlow.git
+
 cd FocusFlow
+
 cp .env.example .env
+
 Edit .env and provide your Gmail credentials (used for sending emails)
 # start the application
 docker compose up
+
 http://localhost:5173/signup
+
 http://localhost:5173/login
 
 ##View Tables in Cassandra
 docker exec -it cassandra cqlsh
+
 USE focusflow;
+
 DESCRIBE TABLES;
